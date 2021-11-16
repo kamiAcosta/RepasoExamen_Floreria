@@ -3,17 +3,20 @@ const app= express();
 const port= 6000;
 const bodyParser= require('body-parser');
 const ejs= require('ejs');
+
+app.set('views','ejs');
+app.set('public',__dirname,'/public');
 var suma=0;
 
-[
+let flores=[
     {
-    "nombreFlor":"jazmin","precio":"150", "color":"blanca"
+    "nombreFlor":"jazmin","precio":"150", "color":"blanca","img":"../RepasoExamen_Floreria/public/jazmin.jpg"
     } ,
     {
-     "nombreFlor":"margarita","precio":"120","color":"blanca"
+     "nombreFlor":"margarita","precio":"120","color":"blanca","img":"../RepasoExamen_Floreria/public/margarita.jpg"
     },
     {
-        "nombreFlor":"lavanda","precio":"180","color":"violeta"
+        "nombreFlor":"lavanda","precio":"180","color":"violeta","img":"../RepasoExamen_Floreria/public/lavanda.jpg"
     }
     ]
 
