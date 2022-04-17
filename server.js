@@ -3,6 +3,8 @@ const app= express();
 const port= 6000;
 const bodyParser= require('body-parser');
 const ejs= require('ejs');
+const path= require('path');
+
 
 app.set('views','ejs');
 app.set('public',__dirname,'/public');
@@ -20,20 +22,17 @@ let flores=[
     }
     ]
 
-app.use(express.json());
-app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+app.set("views engine","ejs");
+app.set("views",path.join(__dirname,"views"));
+app.use(express.static(path.join(__dirname,"public")));
 
 app.get('/',(req,res)=>{
     res.send(`HOLA el servidor esta corriendo en el puerto ${port}`);
 })
 
-app.post('/flores',(res,req)=>{
-    req.body( body.array.forEach(element => {
-        suma+=element.precio;   
-         })
-    )
-    res.send(`el costo final es de:${suma}`)
+app.get('/index',(res,req)=>{
+    res.render("index", {flores:flores});
 })
 
 
